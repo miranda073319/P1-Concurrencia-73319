@@ -2,9 +2,14 @@
 P1 - Desarrolle un software con concurrencia usando exclusión mutua con monitores y semáforos
 
 #3. Explicacion del codigo
-En nuestro sistema, la clase Monitor se encarga de controlar el acceso a los recursos compartidos. Los métodos tomar() y liberar() están declarados como synchronized, lo que asegura que solo un hilo a la vez pueda modificar la cantidad de recursos disponibles, implementando así la exclusión mutua. Cuando un usuario intenta tomar un recurso y este no está disponible (recursos == 0), el hilo entra en espera mediante wait(), liberando el monitor para que otros hilos puedan liberar recursos. Al liberar un recurso, notifyAll() despierta a todos los hilos en espera para que puedan competir nuevamente por el recurso.
+En nuestro sistema, la clase Monitor se encarga de controlar el acceso a los recursos compartidos. 
+Los métodos tomar() y liberar() están declarados como synchronized, lo que asegura que solo un hilo a la vez pueda modificar la cantidad de recursos disponibles, implementando así la exclusión mutua. 
+Cuando un usuario intenta tomar un recurso y este no está disponible (recursos == 0), el hilo entra en espera mediante wait(), liberando el monitor para que otros hilos puedan liberar recursos. 
+Al liberar un recurso, notifyAll() despierta a todos los hilos en espera para que puedan competir nuevamente por el recurso.
 
-Por otro lado, la clase Semaforo utiliza un semáforo contador (espacios) para limitar la cantidad de usuarios que pueden entrar simultáneamente a la zona restringida. La operación acquire() decrementa el contador y bloquea al hilo si la capacidad máxima se ha alcanzado, mientras que release() incrementa el contador y permite que otros hilos accedan. Además, se emplea un semáforo binario (mutex) para proteger la variable compartida ocupantes
+Por otro lado, la clase Semaforo utiliza un semáforo contador (espacios) para limitar la cantidad de usuarios que pueden entrar simultáneamente a la zona restringida. 
+La operación acquire() decrementa el contador y bloquea al hilo si la capacidad máxima se ha alcanzado, mientras que release() incrementa el contador y permite que otros hilos accedan. 
+Además, se emplea un semáforo binario (mutex) para proteger la variable compartida ocupantes
 
 #Resultados al compilar:
 -- Inicialización del sistema -- 
